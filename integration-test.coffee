@@ -15,11 +15,11 @@ after ->
 
 describe 'Webdriver tutorial', ->
   beforeEach ->
+    @timeout 10000
     @driver.get 'http://bites.goodeggs.com/posts/selenium-webdriver-nodejs-tutorial/'
 
   it 'has the title of the post in the window\'s title', ->
-    expect(@driver.getTitle()).to.eventually.contain
-      'Getting started with Selenium Webdriver for node.js'
+    expect(@driver.getTitle()).to.eventually.contain 'Getting started with Selenium Webdriver for node.js'
 
   it 'has publication date', ->
     text = @driver.findElement(css: '.post .meta time').getText()
