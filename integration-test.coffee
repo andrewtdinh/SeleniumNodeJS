@@ -27,5 +27,7 @@ describe 'Webdriver tutorial', ->
 
   it 'links back to the homepage', ->
     @driver.findElement(linkText: 'Bites').click()
-    this.timeout(3000)
-    expect(@driver.getCurrentUrl()).to.eventually.equal 'http://bites.goodeggs.com/'
+    url = @driver.wait(function(){
+      return @driver.getCurrentUrl()
+    }, 5000)
+    expect(url).to.eventually.equal 'http://bites.goodeggs.com/'
